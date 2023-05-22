@@ -1,12 +1,10 @@
 import sqlite3
-def create_table_vehiculo(*args,**kwargs):
+def create_table_cliente(*args,**kwargs):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
-    create_table_users = '''
-    CREATE TABLE IF NOT EXISTS users (
+    create_table_cliente  = '''
+    CREATE TABLE IF NOT EXISTS cliente (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL,
         nombre TEXT NOT NULL;
         dirección TEXT NOT NULL;
         teléfono TEXT NOT NULL;
