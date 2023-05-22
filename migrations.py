@@ -22,6 +22,7 @@ def create_table_pago(*args,**kwargs):
         modelo TEXT NOT NULL;
     )
     '''
+
 def create_table_vehiculo(*args,**kwargs):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
@@ -36,4 +37,3 @@ def create_table_vehiculo(*args,**kwargs):
 
 #holasd asdcasdfa
 #sadfasdfasdfasdfasdf
-
