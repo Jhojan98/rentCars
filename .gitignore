@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#evn
+avenv/
+
 # C extensions
 *.so
 
