@@ -12,3 +12,13 @@ def create_table_cliente(*args,**kwargs):
 
     )
     '''
+def create_table_pago(*args,**kwargs):
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+    create_table_pago  = '''
+    CREATE TABLE IF NOT EXISTS cliente (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        fecha DATE;
+        modelo TEXT NOT NULL;
+    )
+    '''
