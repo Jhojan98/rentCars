@@ -2,7 +2,7 @@ import sqlite3
 def create_table_cliente(*args,**kwargs):
     connection = kwargs.pop('connection')
     cursor = connection.cursor()
-    create_table_cliente  = '''
+    query  = '''
     CREATE TABLE IF NOT EXISTS cliente (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nombre TEXT NOT NULL;
@@ -12,30 +12,30 @@ def create_table_cliente(*args,**kwargs):
 
     )
     '''
-    cursor.execute(create_table_cliente)
+    cursor.execute(query)
     result = cursor.fetchone()
     return result
 
 
 def create_table_pago(*args,**kwargs):
-    connection = sqlite3.connect("database.db")
+    connection = kwargs.pop('connection')
     cursor = connection.cursor()
-    create_table_pago  = '''
+    query  = '''
     CREATE TABLE IF NOT EXISTS cliente (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         fecha DATE;
         modelo TEXT NOT NULL;
     )
     '''
-    cursor.execute(create_table_pago)
+    cursor.execute(query)
     result = cursor.fetchone()
     return result
 
 
 def create_table_vehiculo(*args,**kwargs):
-    connection = sqlite3.connect("database.db")
+    connection = kwargs.pop('connection')
     cursor = connection.cursor()
-    create_table_vehiculo  = '''
+    query  = '''
     CREATE TABLE IF NOT EXISTS vehiculo (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         modelo TEXT NOT NULL;
@@ -44,7 +44,7 @@ def create_table_vehiculo(*args,**kwargs):
     )
     '''
 
-    cursor.execute(create_table_vehiculo)
+    cursor.execute(query)
     result = cursor.fetchone()
     return result
 
