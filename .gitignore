@@ -8,6 +8,7 @@ avenv/
 
 # C extensions
 *.so
+gestion.db
 
 # Distribution / packaging
 .Python
