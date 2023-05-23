@@ -1,7 +1,9 @@
 import sqlite3
+
+@with_connection
 def create_table_cliente(*args,**kwargs):
-    connection = kwargs.pop('connection')
-    conn = kwargs.pop("database.db")
+    conn = kwargs.pop("connection")
+    cursor = conn.cursor()
     query  = '''
     CREATE TABLE IF NOT EXISTS cliente (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,9 +17,10 @@ def create_table_cliente(*args,**kwargs):
     result = cursor.fetchone()
     return result
 
-
+@with_connection
 def create_table_pago(*args,**kwargs):
-    conn = kwargs.pop("database.db")
+    conn = kwargs.pop("connection")
+    cursor = conn.cursor()
     query  = '''
     CREATE TABLE IF NOT EXISTS cliente (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,10 +32,11 @@ def create_table_pago(*args,**kwargs):
     result = cursor.fetchone()
     return result
 
+@with_connection
 def create_table_vehiculo(*args,**kwargs):
-    connection = kwargs.pop('connection')
-    conn = kwargs.pop("database.db")
-    create_table_vehiculo  = '''
+    conn = kwargs.pop("connection")
+    cursor = conn.cursor()
+    query  = '''
     CREATE TABLE IF NOT EXISTS vehiculo (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         modelo TEXT NOT NULL;
@@ -40,15 +44,20 @@ def create_table_vehiculo(*args,**kwargs):
         disponibilidad BOOLEAN NOT NULL DEFAULT 1;
     )
     '''
-    cursor.execute(create_table_vehiculo)
+    cursor.execute(query)
     result = cursor.fetchone()
     return result
 
+@with_connection
 def create_table_reserva(*args,**kwargs):
-    conn = kwargs.pop("database.db")
+    conn = kwargs.pop("connection")
     cursor = conn.cursor()
     query  = '''
+    CREATE TABLE IF NOT EXISTS reserva (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         cliente_id INTEGER,
+        FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+        vehiculo_id INTEGER,
         FOREIGN KEY (vehiculo_id) REFERENCES vehiculo(id)
         fechaRecogida DATE,
         fechaEntrega DATE,
