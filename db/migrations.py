@@ -9,8 +9,14 @@ def create_table_cliente(*args,**kwargs):
         dirección TEXT NOT NULL;
         teléfono TEXT NOT NULL;
         email TEXT NOT NULL;
+
     )
     '''
+    cursor.execute(create_table_cliente)
+    result = cursor.fetchone()
+    return result
+
+
 def create_table_pago(*args,**kwargs):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
@@ -21,6 +27,11 @@ def create_table_pago(*args,**kwargs):
         modelo TEXT NOT NULL;
     )
     '''
+    cursor.execute(create_table_pago)
+    result = cursor.fetchone()
+    return result
+
+
 def create_table_vehiculo(*args,**kwargs):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
@@ -33,6 +44,8 @@ def create_table_vehiculo(*args,**kwargs):
     )
     '''
 
-#holasd asdcasdfa
-#sadfasdf
+    cursor.execute(create_table_vehiculo)
+    result = cursor.fetchone()
+    return result
+
 
