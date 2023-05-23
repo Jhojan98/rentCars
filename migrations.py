@@ -9,7 +9,6 @@ def create_table_cliente(*args,**kwargs):
         dirección TEXT NOT NULL;
         teléfono TEXT NOT NULL;
         email TEXT NOT NULL;
-
     )
     '''
 def create_table_pago(*args,**kwargs):
