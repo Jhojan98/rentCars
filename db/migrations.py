@@ -1,6 +1,6 @@
 import sqlite3
 def create_table_cliente(*args,**kwargs):
-    connection = sqlite3.connect("database.db")
+    connection = kwargs.pop('connection')
     cursor = connection.cursor()
     create_table_cliente  = '''
     CREATE TABLE IF NOT EXISTS cliente (
