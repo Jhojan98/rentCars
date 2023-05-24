@@ -5,12 +5,13 @@ def create_table_cliente(*args,**kwargs):
     conn = kwargs.pop('connection')
     cursor = conn.cursor()
     query  = f'''
-    CREATE TABLE IF NOT EXISTS cliente (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nombre TEXT NOT NULL,
-        dirección TEXT NOT NULL,
-        teléfono TEXT NOT NULL,
-        email TEXT NOT NULL
+        CREATE TABLE IF NOT EXISTS cliente (
+            identification INTEGER PRIMARY_KEY UNIQUE,
+            name TEXT NOT NULL,
+            last_name TEXT NOT NULL,
+            address TEXT NOT NULL,
+            phone TEXT NOT NULL,
+            email TEXT NOT NULL
     )
     '''
     cursor.execute(query)
@@ -23,7 +24,6 @@ def create_table_pago(*args,**kwargs):
     cursor = conn.cursor()
     query  = f'''
     CREATE TABLE IF NOT EXISTS pago (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
         fecha DATE,
         modelo TEXT NOT NULL
     )
@@ -38,7 +38,6 @@ def create_table_vehiculo(*args,**kwargs):
     cursor = conn.cursor()
     query  = f'''
     CREATE TABLE IF NOT EXISTS vehiculo (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
         modelo TEXT NOT NULL,
         caracteristicas TEXT NOT NULL,
         disponibilidad BOOLEAN NOT NULL DEFAULT 1
@@ -54,7 +53,7 @@ def create_table_vehiculo(*args,**kwargs):
 #     cursor = conn.cursor()
 #     query  = '''
 #     CREATE TABLE IF NOT EXISTS reserva (
-#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
 #         cliente_id INTEGER,
 #         FOREIGN KEY (cliente_id) REFERENCES cliente(id),
 #         vehiculo_id INTEGER,
@@ -71,13 +70,15 @@ def create_table_vehiculo(*args,**kwargs):
 
 
 def run_migration():
-    create_table_cliente()
-    create_table_pago()
+    # create_table_cliente()
+    # create_table_pago()
     # create_table_vehiculo()
     # create_table_reserva()
+    pass
 
 if __name__ == "__main__":
     create_table_cliente()
     create_table_pago()
     create_table_vehiculo()
     # create_table_reserva()
+    
