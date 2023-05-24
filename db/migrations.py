@@ -38,9 +38,10 @@ def create_table_vehiculo(*args,**kwargs):
     cursor = conn.cursor()
     query  = f'''
     CREATE TABLE IF NOT EXISTS vehiculo (
-        modelo TEXT NOT NULL,
-        caracteristicas TEXT NOT NULL,
-        disponibilidad BOOLEAN NOT NULL DEFAULT 1
+        model TEXT NOT NULL,
+        plate TEXT NOT NULL,
+        characteristics TEXT NOT NULL,
+        aviailability BOOLEAN NOT NULL DEFAULT 1
     )
     '''
     cursor.execute(query)
