@@ -24,13 +24,8 @@ def create_table_pago(*args,**kwargs):
     cursor = conn.cursor()
     query  = f'''
     CREATE TABLE IF NOT EXISTS pago (
-<<<<<<< HEAD
-        fecha DATE NOT NULL,
-        modelo TEXT NOT NULL
-=======
         date DATE,
         model TEXT NOT NULL
->>>>>>> 83d885f19c3273d2ae7f8deb015c270d4ead2017
     )
     '''
     cursor.execute(query)
