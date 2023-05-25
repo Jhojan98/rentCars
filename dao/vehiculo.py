@@ -1,10 +1,8 @@
-import sqlite3
 from db.connection import with_connection
-
 
 class Vehicle():
 
-    def __init__(self, model, plate, characteristics, aviailability):
+    def data(self, model, plate, characteristics, aviailability):
         self._model = model
         self._plate = plate
         self._characteristics = characteristics
@@ -16,6 +14,7 @@ class Vehicle():
         conn = kwargs.pop('connection')
         cursor = conn.cursor()
         query = f'''
+        INSERT INTO vehiculo
             (model,
             plate,
             characteristics,
@@ -23,14 +22,15 @@ class Vehicle():
             VALUES (?,?,?,?)
         '''
         cursor.execute(query,
-                       (self._model,
-                        self._plate,
-                        self._characteristics,
-                        self._aviailability,
-                        )
+                                (self._model,
+                                self._plate,
+                                self._characteristics,
+                                self._aviailability)
         )
-        return cursor.lastrowid   
+        return cursor.lastrowid  
     
 if __name__ == '__main__':
-    ve = Vehicle("hola", "123 fsd", "automatico",1)
+    ve = Vehicle()
+    ve.data("hola", "123 fsd", "automatico",1)
     ve.insert_vehicle()
+    # print("hola")

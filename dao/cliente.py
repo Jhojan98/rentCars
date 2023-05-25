@@ -30,7 +30,7 @@ class ClienteDAO():
             VALUES(?,?,?,?,?,?)
         '''
         cursor.execute(query,
-                                (self._identication,
+                                (self._identificacion,
                                 self._name,
                                 self._last_name,
                                 self._address,
@@ -38,3 +38,11 @@ class ClienteDAO():
                                 self._email)
         )
         return cursor.lastrowid
+
+
+if __name__ == '__main__':
+    ve = ClienteDAO()
+    ve.data(12312,"juan","felipe","calle 40", "320 123", "juan@google.com" )
+    ve.insert_estudiante()
+    # ve.insert_vehicle()
+    # print("hola")
