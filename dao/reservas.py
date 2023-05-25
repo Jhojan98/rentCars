@@ -27,7 +27,7 @@ def insert_reserva(self, *args, **kwargs):
         VALUES (?, ?, ?, ?, ?)
     '''
     cursor.execute(query,
-                    (self._cliente_id,
+                        (self._cliente_id,
                         self._vehiculo_id,
                         self._pago_id,
                         self._arrive_data,
