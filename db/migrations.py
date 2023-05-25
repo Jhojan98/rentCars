@@ -48,26 +48,26 @@ def create_table_vehiculo(*args,**kwargs):
     result = cursor.fetchone()
     return result
 
-# @with_connection
-# def create_table_reserva(*args,**kwargs):
-#     conn = kwargs.pop("connection")
-#     cursor = conn.cursor()
-#     query  = '''
-#     CREATE TABLE IF NOT EXISTS reserva (
+@with_connection
+def create_table_reserva(*args,**kwargs):
+     conn = kwargs.pop("connection")
+     cursor = conn.cursor()
+     query  = '''
+     CREATE TABLE IF NOT EXISTS reserva (
 
-#         cliente_id INTEGER,
-#         FOREIGN KEY (cliente_id) REFERENCES cliente(id),
-#         vehiculo_id INTEGER,
-#         FOREIGN KEY (vehiculo_id) REFERENCES vehiculo(id),
-#         fechaRecogida DATE,
-#         fechaEntrega DATE,
-#         pago_id INTEGER,
-#         FOREIGN KEY (pago_id) REFERENCES pago(id)
-#     )
-#     '''
-#     cursor.execute(query)
-#     result = cursor.fetchone()
-#     return result
+         cliente_id INTEGER NOT NULL,
+         vehiculo_id INTEGER NOT NULL,
+         pago_id INTEGER NOT NULL,
+         arrive_date DATE NOT NULL,
+         leave_date DATE NOT NULL,
+         FOREIGN KEY (cliente_id) REFERENCES cliente(id),
+         FOREIGN KEY (vehiculo_id) REFERENCES vehiculo(id),
+         FOREIGN KEY (pago_id) REFERENCES pago(id)
+     )
+     '''
+     cursor.execute(query)
+     result = cursor.fetchone()
+     return result
 
 
 def run_migration():
@@ -81,5 +81,5 @@ if __name__ == "__main__":
     create_table_cliente()
     create_table_pago()
     create_table_vehiculo()
-    # create_table_reserva()
+    create_table_reserva()
     
