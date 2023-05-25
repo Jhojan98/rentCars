@@ -1,3 +1,4 @@
+import sqlite3
 from db.connection import with_connection
 
 
@@ -12,7 +13,7 @@ class Vehicle():
     
     @with_connection
     def insert_vehicle(self, *args, **kwargs):
-        conn = kwargs.pop('connoection')
+        conn = kwargs.pop('connection')
         cursor = conn.cursor()
         query = f'''
             (model,
@@ -29,3 +30,7 @@ class Vehicle():
                         )
         )
         return cursor.lastrowid   
+    
+if __name__ == '__main__':
+    ve = Vehicle("hola", "123 fsd", "automatico",1)
+    ve.insert_vehicle()
