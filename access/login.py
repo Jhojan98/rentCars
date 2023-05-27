@@ -7,10 +7,15 @@ def handle_login(form):
     password = form['password']
     
     cliente = ClienteDAO()
-    if(cliente.select_client(username,password) != None):
-        return render_template('home.html')
+    data = cliente.select_client(username,password)
+    print(f'123: {data[-1] == 1}')
+    if(data != None):
+        context = {
+            'is_admin':data[-1] == 1
+        }
+        return render_template('home.html', **context)
     
     context = {
-        'error': 'Incorrect fields'
+        'error': 'Incorrect fields',       
     }
     return render_template('login.html', **context)    

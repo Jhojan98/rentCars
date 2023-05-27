@@ -9,7 +9,8 @@ class ClienteDAO():
             address,
             phone,
             email,
-            password):
+            password,
+            is_admin = False):
         self._identificacion = identification
         self._username = username
         self._name= name
@@ -18,6 +19,7 @@ class ClienteDAO():
         self._phone= phone
         self._email= email
         self._password = password
+        self._is_admin = is_admin
 
     @with_connection
     def insert_client(self, *args, **kwargs):
@@ -32,8 +34,9 @@ class ClienteDAO():
             address,
             phone,
             email,
-            password)
-            VALUES(?,?,?,?,?,?,?,?)
+            password,
+            is_admin)
+            VALUES(?,?,?,?,?,?,?,?,?)
         '''
         cursor.execute(query,
                                 (self._identificacion,
@@ -43,7 +46,8 @@ class ClienteDAO():
                                 self._address,
                                 self._phone,
                                 self._email,
-                                self._password)
+                                self._password,
+                                self._is_admin)
         )
         return cursor.lastrowid
     
@@ -60,12 +64,14 @@ class ClienteDAO():
                 address,
                 phone,
                 email,
-                password
+                password,
+                is_admin
             FROM cliente
             WHERE username = ? AND password = ?
         '''
         cursor.execute(query, (username, password))
         result = cursor.fetchone()
         return result
+    
 
 

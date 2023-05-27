@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 from access.signup import handle_signup
 from access.login import handle_login
+import sqlite3
+from dao.cliente import ClienteDAO
 
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -22,6 +24,13 @@ def login():
     return handle_login(request.form)
 
 
-
 if __name__ == '__main__':
-    app.run()    
+    
+    try:
+        cliente = ClienteDAO()
+        cliente.data(1, "ADMIN", "admin", "admin", "admin",321, "admin@google.com", 1234,True)
+        cliente.insert_client()
+    except sqlite3.IntegrityError:
+        pass
+    finally:
+        app.run()    

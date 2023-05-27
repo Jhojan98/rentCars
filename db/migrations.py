@@ -14,7 +14,8 @@ def create_table_cliente(*args,**kwargs):
             address TEXT NOT NULL,
             phone TEXT NOT NULL,
             email TEXT NOT NULL,
-            password TEXT NOT NULL
+            password TEXT NOT NULL,
+            is_admin BOOLEAN DEFAULT FALSE
     )
     '''
     cursor.execute(query)
