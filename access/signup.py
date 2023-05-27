@@ -3,12 +3,17 @@ from dao.cliente import ClienteDAO
 
 
 def handle_signup(form):
+    identification = form['identification']
     username = form['username']
+    name = form['name']
+    last_name = form['last_name']
+    address = form['address']
+    phone = form['phone']
     email = form['email']
-    password = form['password']
+    password= form['password']
     
     cliente = ClienteDAO()
-    cliente.data(10,username,"asd","asd", 1234123, email)
+    cliente.data(identification, username, name, last_name, address, phone, email, password)
     cliente.insert_client();
     print(username,email,password)
 
