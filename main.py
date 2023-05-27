@@ -9,7 +9,7 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def home():
-    return render_template('test.html')
+    return render_template('login.html')
 
 @app.route('/SignUp')
 def render_singup():
