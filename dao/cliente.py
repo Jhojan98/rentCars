@@ -46,5 +46,26 @@ class ClienteDAO():
                                 self._password)
         )
         return cursor.lastrowid
+    
+
+    @with_connection
+    def select_client(self, username, password, *args, **kwargs):
+        conn = kwargs.pop('connection')
+        cursor = conn.cursor()
+        query = f'''
+            SELECT identification,
+                username,
+                name,
+                last_name,
+                address,
+                phone,
+                email,
+                password
+            FROM cliente
+            WHERE username = ? AND password = ?
+        '''
+        cursor.execute(query, (username, password))
+        result = cursor.fetchone()
+        return result
 
 
