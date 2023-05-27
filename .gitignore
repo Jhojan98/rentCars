@@ -5,6 +5,7 @@ __pycache__/
 
 #evn
 avenv/
+test.py
 
 # C extensions
 *.so

@@ -40,9 +40,3 @@ class ClienteDAO():
         return cursor.lastrowid
 
 
-if __name__ == '__main__':
-    ve = ClienteDAO()
-    ve.data(12312,"juan","felipe","calle 40", "320 123", "juan@google.com" )
-    ve.insert_estudiante()
-    # ve.insert_vehicle()
-    # print("hola")

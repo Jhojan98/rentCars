@@ -1,15 +1,17 @@
-from dao.cliente import ClienteDAO
-from dao.vehiculo import Vehicle
+from flask import Flask, render_template, request
+from access.signup import handle_signup
 
+app = Flask(__name__)
 
-def run():
-    # cliente = ClienteDAO()
-    # cliente.data("12312", "juan", "oscar", "calle 40", "3123123", "juan@google.com")
-    # cliente.insert_estudiante()
-    pass
-    
+@app.route('/')
+def home():
+    return render_template('signup.html')
 
+@app.route('/signup', methods=['POST'])
+def signup():
+    return handle_signup(request.form)
 
 if __name__ == '__main__':
-    vehicle = Vehicle("hola", "123 fsd", "automatico",1)
-    print("hola")
+    app.run()
+
+    
