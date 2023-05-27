@@ -1,35 +1,106 @@
 {% extends 'base.html' %}
-{% block content %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="#">Alquiler de Carros</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Carros Disponibles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Reservaciones</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-<!-- Contenido de la página -->
-<div class="container">
-  <h1>Bienvenido al servicio de alquiler de carros</h1>
-  <p>Explora nuestra amplia selección de carros disponibles y realiza tu reservación en línea.</p>
-  <p>¡Disfruta de la comodidad y la libertad de viajar con un carro alquilado!</p>
-</div>
+
+
+{% block navbar %}
+  <!-- Contenido personalizado del navbar para este archivo HTML -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Mi Sitio Web</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            {% if is_admin %}
+              <a class="nav-link" href="#">Add vehicle</a>
+            {% else %}
+              <a class="nav-link" href="#">Acerca de</a>
+            {% endif %}  
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <header class="hero bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Alquila el auto perfecto</h1>
+      <p class="lead">Descubre nuestra amplia selección de autos para alquilar</p>
+      <a href="#" class="btn btn-light btn-lg">Ver autos disponibles</a>
+    </div>
+  </header>
+
+  <!-- Car Listing Section -->
+  <section class="car-listing py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Car Item -->
+        <div class="col-lg-4 mb-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 1">
+            <div class="card-body">
+              <h5 class="card-title">Nombre del Auto</h5>
+              <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <a href="#" class="btn btn-primary">Reservar</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Car Item -->
+        <div class="col-lg-4 mb-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
+            <div class="card-body">
+              <h5 class="card-title">Nombre del Auto</h5>
+              <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <a href="#" class="btn btn-primary">Reservar</a>
+            </div>
+          </div>
+        </div>
+         <!-- Car Item -->
+         <div class="col-lg-4 mb-4">
+            <div class="card">
+              <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
+              <div class="card-body">
+                <h5 class="card-title">Nombre del Auto</h5>
+                <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="#" class="btn btn-primary">Reservar</a>
+              </div>
+            </div>
+          </div>
+           <!-- Car Item -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+              <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
+              <div class="card-body">
+                <h5 class="card-title">Nombre del Auto</h5>
+                <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="#" class="btn btn-primary">Reservar</a>
+              </div>
+            </div>
+          </div>
+
+        <!-- Car Item -->
+        <div class="col-lg-4 mb-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 3">
+            <div class="card-body">
+              <h5 class="card-title">Nombre del Auto</h5>
+              <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <a href="#" class="btn btn-primary">Reservar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}

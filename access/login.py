@@ -8,7 +8,7 @@ def handle_login(form):
     
     cliente = ClienteDAO()
     data = cliente.select_client(username,password)
-    print(f'123: {data[-1] == 1}')
+    
     if(data != None):
         context = {
             'is_admin':data[-1] == 1
