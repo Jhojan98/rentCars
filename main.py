@@ -3,10 +3,11 @@ from access.signup import handle_signup
 from access.login import handle_login
 
 app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('test.html')
 
 @app.route('/SignUp')
 def render_singup():
