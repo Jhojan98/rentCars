@@ -3,6 +3,7 @@ from access.signup import handle_signup
 from access.login import handle_login
 import sqlite3
 from dao.cliente import ClienteDAO
+from access.cars import handle_cars
 
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -22,6 +23,16 @@ def signup():
 @app.route('/login', methods=['POST'])
 def login():
     return handle_login(request.form)
+
+@app.route('/Vehiculo')
+def render_vehiculo():
+    return render_template('vehiculo.html')
+
+@app.route('/Vehiculo', methods=['POST'])
+def vehiculo():
+    return handle_cars(request.form)
+
+
 
 
 if __name__ == '__main__':

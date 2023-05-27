@@ -45,7 +45,8 @@ def create_table_vehiculo(*args,**kwargs):
         model TEXT NOT NULL,
         plate TEXT NOT NULL,
         characteristics TEXT NOT NULL,
-        aviailability BOOLEAN NOT NULL DEFAULT 1
+        aviailability BOOLEAN NOT NULL DEFAULT 1,
+        image_data BLOB
     )
     '''
     cursor.execute(query)

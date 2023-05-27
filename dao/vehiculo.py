@@ -18,14 +18,16 @@ class Vehicle():
             (model,
             plate,
             characteristics,
-            aviailability)
-            VALUES (?,?,?,?)
+            aviailability,
+            image_data)
+            VALUES (?,?,?,?,?)
         '''
         cursor.execute(query,
                                 (self._model,
                                 self._plate,
                                 self._characteristics,
-                                self._aviailability)
+                                self._aviailability,
+                                self._image_data)
         )
         return cursor.lastrowid  
     
