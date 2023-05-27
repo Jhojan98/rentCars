@@ -7,11 +7,13 @@ def create_table_cliente(*args,**kwargs):
     query  = f'''
         CREATE TABLE IF NOT EXISTS cliente (
             identification INTEGER PRIMARY_KEY UNIQUE,
+            username TEXT NOT NULL,
             name TEXT NOT NULL,
             last_name TEXT NOT NULL,
             address TEXT NOT NULL,
             phone TEXT NOT NULL,
-            email TEXT NOT NULL
+            email TEXT NOT NULL,
+            password TEXT NOT NULL
     )
     '''
     cursor.execute(query)

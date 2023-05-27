@@ -9,7 +9,7 @@ def handle_signup(form):
     
     cliente = ClienteDAO()
     cliente.data(10,username,"asd","asd", 1234123, email)
-    cliente.insert_estudiante()
+    cliente.insert_client();
     print(username,email,password)
 
 
