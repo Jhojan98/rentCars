@@ -6,6 +6,7 @@ def create_table_cliente(*args,**kwargs):
     cursor = conn.cursor()
     query  = f'''
         CREATE TABLE IF NOT EXISTS cliente (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             identification INTEGER PRIMARY_KEY UNIQUE,
             username TEXT NOT NULL,
             name TEXT NOT NULL,
@@ -71,13 +72,6 @@ def create_table_reserva(*args,**kwargs):
      result = cursor.fetchone()
      return result
 
-
-def run_migration():
-    # create_table_cliente()
-    # create_table_pago()
-    # create_table_vehiculo()
-    # create_table_reserva()
-    pass
 
 if __name__ == "__main__":
     create_table_cliente()
