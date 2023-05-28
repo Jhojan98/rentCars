@@ -18,37 +18,51 @@
     height: 100%;
     box-sizing: border-box;
   }
+
+  .container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200vh;
+  }
+ 
+  .btn-lg {
+    font-size: 25px;
+    padding: 30px 50px;
+    background-color: blue;
+    color: white;
+    border-radius: 20px;
+  }
+
 </style>
 {% endblock %}
 
 {% block content %}
-
-<div class="card mb-3">
-  <div class="row g-0 d-flex align-items-center">
-    <div class="col-lg-4 d-none d-lg-flex">
-      <img src="{{ url_for('static', filename='img/car2.jpg') }}" alt="Item Image"
-        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-    </div>
-    <div class="col-lg-8">
-      <div class="card-body py-5 px-md-5">
-
-        <form>
-          <div class="col-md-6 mb-4">
-            <div class="item-info text-center">
-              <h2>INSERTAR MODELO</h2>
-              <p>Description: SFSLKDFSDJFSLFJSLDJODÑFGIJIORMGOIRHTNBROTH.</p>
-              <p>Precio: 100000$</p>
-              <button>Reservar</button>
+<div class="container-center">
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-lg-4">
+        <img src="{{ url_for('static', filename='img/car2.jpg') }}" alt="Item Image" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body py-5 px-md-5">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="item-info">
+                <h2>INSERTAR MODELO</h2>
+                <p>Description: SFSLKDFSDJFSLFJSLDJODÑFGIJIORMGOIRHTNBROTH.</p>
+                <p>Precio: 100000$</p>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+              <button class="btn-lg">Reservar</button>
             </div>
           </div>
-        </form>
-
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
 {% endblock %}
 
 
