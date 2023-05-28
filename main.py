@@ -20,6 +20,10 @@ def render_singup():
 def render_itemcar():
     return render_template('itemcar.html')
 
+@app.route('/home')
+def homeReal():
+    return render_template('home.html')
+
 @app.route('/signup', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
 def signup():
     return handle_signup(request.form)
