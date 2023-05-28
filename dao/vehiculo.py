@@ -31,4 +31,21 @@ class Vehicle():
                                 self._image_data)
         )
         return cursor.lastrowid  
+
+
+    @with_connection
+    def select_vehicle(self, *args, **kwargs):
+        conn = kwargs.pop('connection')
+        cursor = conn.cursor()
+        query = f'''
+        SELECT model,
+            plate,
+            characteristics,
+            aviailability,
+            image_data
+        FROM vehiculo
+        '''
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
     
