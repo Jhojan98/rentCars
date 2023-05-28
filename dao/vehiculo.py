@@ -2,11 +2,12 @@ from db.connection import with_connection
 
 class Vehicle():
 
-    def data(self, model, plate, characteristics, aviailability):
+    def data(self, model, plate, characteristics, aviailability, image):
         self._model = model
         self._plate = plate
         self._characteristics = characteristics
         self._aviailability = aviailability
+        self._image_data = image
 
     
     @with_connection

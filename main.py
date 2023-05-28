@@ -16,23 +16,24 @@ def home():
 def render_singup():
     return render_template('signUp.html')
 
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
 def signup():
     return handle_signup(request.form)
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
 def login():
     return handle_login(request.form)
 
-@app.route('/Vehiculo')
+"""render de template html add card in the web"""
+@app.route('/add/vehiculo')
 def render_vehiculo():
     return render_template('vehiculo.html')
 
-@app.route('/Vehiculo', methods=['POST'])
+
+"""When the user insert a form"""
+@app.route('/add/vehiculo/added', methods=['POST']) # When de user insert data make a peticion POTS for send that information to the server 
 def vehiculo():
     return handle_cars(request.form)
-
-
 
 
 if __name__ == '__main__':
