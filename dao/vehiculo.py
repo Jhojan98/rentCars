@@ -31,8 +31,3 @@ class Vehicle():
         )
         return cursor.lastrowid  
     
-if __name__ == '__main__':
-    ve = Vehicle()
-    ve.data("hola", "123 fsd", "automatico",1)
-    ve.insert_vehicle()
-    # print("hola")
