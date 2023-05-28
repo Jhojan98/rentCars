@@ -42,6 +42,7 @@ def create_table_vehiculo(*args,**kwargs):
     cursor = conn.cursor()
     query  = f'''
     CREATE TABLE IF NOT EXISTS vehiculo (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         model TEXT NOT NULL,
         plate TEXT NOT NULL,
         characteristics TEXT NOT NULL,

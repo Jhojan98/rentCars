@@ -10,6 +10,7 @@ def handle_cars(form):
   
     image_data = form['image_data']
     
+    print(image_data)
     encoded_image = base64.b64encode(image_data.encode('utf-8')).decode('utf-8')
     print(model, plate, characteristics, availability)
 
