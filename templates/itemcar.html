@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block style %}
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  .card.mb-3 {
+    margin: 1cm;
+    height: calc(100% - 2cm);
+    box-sizing: border-box;
+  }
+  
+  .row.g-0.d-flex.align-items-center {
+    height: 100%;
+    box-sizing: border-box;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="card mb-3">
+  <div class="row g-0 d-flex align-items-center">
+    <div class="col-lg-4 d-none d-lg-flex">
+      <img src="item-image.jpg" alt="Item Image"
+        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+    </div>
+    <div class="col-lg-8">
+      <div class="card-body py-5 px-md-5">
+
+        <form>
+          <div class="col-md-6 mb-4">
+            <div class="item-info text-center">
+              <h2>INSERTAR MODELO</h2>
+              <p>Description: SFSLKDFSDJFSLFJSLDJODÑFGIJIORMGOIRHTNBROTH.</p>
+              <p>Precio: 100000$</p>
+              <button>Reservar</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
