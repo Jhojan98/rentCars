@@ -44,25 +44,32 @@
   <!-- Car Listing Section -->
  
   <section class="car-listing py-5">
-    <form action="/itemcar">
+    <form action="/itemcar" method="post">
       <div class="container">
-          <div class="row">
-
-            {% for vehicle in vehicles %}
-
-            <div class="col-lg-4 mb-4">
-              <div class="card">
-                <img src="{{ url_for('static', filename=vehicle[4]) }}" alt="Imagen generada">
-                  <div class="card-body">
-                  <h5 class="card-title">{{ vehicle[0] }}</h5>
-                  <p class="card-text">{{ vehicle[2] }}</p>
-                  <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-primary btn-block px-20">Reservar</button>
-                  </div>
+        <div class="row">
+          {% for vehicle in vehicles %}
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+              <img src="{{ url_for('static', filename=vehicle[4]) }}" alt="Imagen generada">
+              <div class="card-body">
+                <h5 class="card-title">{{ vehicle[0] }}</h5>
+                <p class="card-text">{{ vehicle[2] }}</p>
+                <div class="form-group mt-3">
+                  <!-- Hidden input fields for vehicle context -->
+                  <input type="hidden" name="model" value="{{ vehicle[0] }}">
+                  <input type="hidden" name="plate" value="{{ vehicle[1] }}">
+                  <input type="hidden" name="characteristics" value="{{ vehicle[2] }}">
+                  <input type="hidden" name="availability" value="{{ vehicle[3] }}">
+                  <input type="hidden" name="image" value="{{ vehicle[4] }}">
+                  <input type="hidden" name="vehicle" value="{{vehicle}}">
+                  <button type="submit" class="btn btn-primary btn-block px-20">Reservar</button>
                 </div>
               </div>
             </div>
-
-        {% endfor %}
-            
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </form>
+        
 {% endblock %}

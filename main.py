@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from access.signup import handle_signup
 from access.login import handle_login
+from access.itemcar import handle_itemcar
 import sqlite3
 from dao.cliente import ClienteDAO
 from access.cars import handle_cars
@@ -21,9 +22,11 @@ def render_singup():
 def render_itemcar():
     return render_template('itemcar.html')
 
-@app.route('/home')
-def homeReal():
-    return render_template('home.html')
+@app.route('/itemcar', methods=['POST'])
+def itemcar():
+    vehicle = request.form['vehicle']
+    context = {'vehicle': vehicle}
+    return render_template('itemcar.html', **context)
 
 @app.route('/signup', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
 def signup():

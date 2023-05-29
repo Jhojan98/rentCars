@@ -1,6 +1,14 @@
-from flask import render_template
-from dao.cliente import ClienteDAO
+from flask import render_template, redirect,url_for
+from dao.vehiculo import Vehicle
 
 def handle_itemcar(form):
-    card_title = form['cart-title']
+    model = form['model']
+    plate = form['plate']
+    characteristics = form['characteristics']
+    aviailability = form['aviailability']
+    image_data = form['image_data']
     
+
+
+
+    return redirect(url_for('itemcar'))
