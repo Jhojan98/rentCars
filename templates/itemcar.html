@@ -32,6 +32,23 @@
     border-radius: 30px;
   }
 
+  @font-face {
+  font-family: 'Proxima Soft';
+  src: url('/path/to/proxima-soft.woff2') format('woff2'),
+       url('/path/to/proxima-soft.woff') format('woff'),
+       url('/path/to/proxima-soft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+
+  .card-title, .card-text {
+  font-family: 'Proxima Soft', Arial, sans-serif;
+  font-size: 18px;
+  }
+
+  .card-title {
+  font-weight: bold;
+  }
 </style>
 {% endblock %}
 
@@ -47,10 +64,11 @@
           <div class="row">
             <div class="col-md-6">
               <div class="item-info">
-                <h5 class="card-title">Modelo: {{ vehicle[0]}}</h5>
-                <p class="card-text">Caracteristicas: {{ vehicle[2]}}</p>
-                <p class="card-text">Placa: {{ vehicle[1]}}</p>
-                <p class="card-text">Precio: {{ vehicle[3]}}</p>
+                <h5 class="card-title">Modelo:<span style="float: right;">{{ vehicle[0] }}</span></h5>
+                <p class="card-text">Características:<span style="float: right;">{{ vehicle[2] }}</span></p>
+                <p class="card-text">Placa:<span style="float: right;">{{ vehicle[1] }}</span></p>
+                <p class="card-text">Precio:<span style="float: right;">{{ vehicle[3] }}</span></p>
+                
               </div>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-center">
