@@ -40,16 +40,17 @@
   <div class="card mb-3 custom-card" style="margin: 1cm; background: #76d0d8;">
     <div class="row g-0">
       <div class="col-lg-4">
-        <img src="{{ url_for('static', filename=vehicle[5]) }}" alt="Item Image" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" style="width: 416px; height: 217px;"/>
+        <img src="{{ url_for('static', filename=vehicle[5]) }}" alt="Item Image" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" style="width: 416px; height: 300px;"/>
       </div>
       <div class="col-lg-8">
         <div class="card-body py-5 px-md-5">
           <div class="row">
             <div class="col-md-6">
               <div class="item-info">
-                <h5 class="card-title">{{ vehicle[0]}}</h5>
-                <p class="card-text">{{ vehicle[2]}}</p>
-                <p class="card-text">{{ vehicle[1]}}</p>
+                <h5 class="card-title">Modelo: {{ vehicle[0]}}</h5>
+                <p class="card-text">Caracteristicas: {{ vehicle[2]}}</p>
+                <p class="card-text">Placa: {{ vehicle[1]}}</p>
+                <p class="card-text">Precio: {{ vehicle[3]}}</p>
               </div>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-center">
