@@ -3,6 +3,7 @@ from access.signup import handle_signup
 from access.login import handle_login
 from access.itemcar import handle_itemcar
 import sqlite3
+import ast
 from dao.cliente import ClienteDAO
 from access.cars import handle_cars
 from access.show_vehicle import show_vehicle_db
@@ -24,8 +25,11 @@ def render_itemcar():
 
 @app.route('/itemcar', methods=['POST'])
 def itemcar():
-    vehicle = request.form['vehicle']
-    context = {'vehicle': vehicle}
+    vehicle = request.form.getlist('vehicle')
+    vehicle_tuple = ast.literal_eval(vehicle[0])
+    print(type(vehicle_tuple))
+    print(vehicle_tuple)
+    context = {'vehicle': vehicle_tuple}
     return render_template('itemcar.html', **context)
 
 @app.route('/signup', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
