@@ -49,7 +49,7 @@
           {% for vehicle in vehicles %}
           <div class="col-lg-4 mb-4">
             <div class="card">
-              <img src="{{ url_for('static', filename=vehicle[4]) }}" alt="Imagen generada" style="width: 416px; height: 217px;">
+              <img src="{{ url_for('static', filename=vehicle[4]) }}" alt="Imagen generada" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" style="width: 416px; height: 217px;">
               <div class="card-body">
                 <h5 class="card-title">{{ vehicle[0] }}</h5>
                 <p class="card-text">{{ vehicle[2] }}</p>
