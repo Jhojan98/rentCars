@@ -47,76 +47,22 @@
     <form action="/itemcar">
       <div class="container">
           <div class="row">
-            <!-- Car Item -->
+
+            {% for vehicle in vehicles %}
+
             <div class="col-lg-4 mb-4">
               <div class="card">
-                <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 1">
-                <div class="card-body">
-                  <h5 class="card-title">Nombre del Auto</h5>
-                  <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <img src="{{ url_for('static', filename=vehicle[4]) }}" alt="Imagen generada">
+                  <div class="card-body">
+                  <h5 class="card-title">{{ vehicle[0] }}</h5>
+                  <p class="card-text">{{ vehicle[2] }}</p>
                   <div class="form-group mt-3">
                     <button type="submit" class="btn btn-primary btn-block px-20">Reservar</button>
                   </div>
                 </div>
               </div>
             </div>
+
+        {% endfor %}
             
-            <!-- Car Item -->
-            <div class="col-lg-4 mb-4">
-              <div class="card">
-                <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
-                <div class="card-body">
-                  <h5 class="card-title">Nombre del Auto</h5>
-                  <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-primary btn-block px-20">Reservar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Car Item -->
-            <div class="col-lg-4 mb-4">
-                <div class="card">
-                  <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre del Auto</h5>
-                    <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="form-group mt-3">
-                      <button type="submit" class="btn btn-primary btn-block px-20">Reservar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Car Item -->
-            <div class="col-lg-4 mb-4">
-                <div class="card">
-                  <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre del Auto</h5>
-                    <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="form-group mt-3">
-                      <button type="submit" class="btn btn-primary btn-block px-20">Reservar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            <!-- Car Item -->
-            <div class="col-lg-4 mb-4">
-              <div class="card">
-                <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 3">
-                <div class="card-body">
-                  <h5 class="card-title">Nombre del Auto</h5>
-                  <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-primary btn-block px-20">Reservar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </form>
-  </section>
-
 {% endblock %}

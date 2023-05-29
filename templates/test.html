@@ -1,83 +1,28 @@
-{% extends 'base.html' %}
-
-{% block style %}
-  <!-- Agrega aquí tus estilos adicionales si es necesario -->
-  <link rel="stylesheet" href="styles.css">
-{% endblock %}
-
-{% block content %}
-  <!-- Hero Section -->
-  <header class="hero bg-primary text-white text-center py-5">
-    <div class="container">
-      <h1 class="display-4">Alquila el auto perfecto</h1>
-      <p class="lead">Descubre nuestra amplia selección de autos para alquilar</p>
-      <a href="#" class="btn btn-light btn-lg">Ver autos disponibles</a>
-    </div>
-  </header>
-
-  <!-- Car Listing Section -->
-  <section class="car-listing py-5">
-    <div class="container">
-      <div class="row">
-        <!-- Car Item -->
-        <div class="col-lg-4 mb-4">
-          <div class="card">
-            <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 1">
-            <div class="card-body">
-              <h5 class="card-title">Nombre del Auto</h5>
-              <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <a href="#" class="btn btn-primary">Reservar</a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Item -->
-        <div class="col-lg-4 mb-4">
-          <div class="card">
-            <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
-            <div class="card-body">
-              <h5 class="card-title">Nombre del Auto</h5>
-              <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <a href="#" class="btn btn-primary">Reservar</a>
-            </div>
-          </div>
-        </div>
-         <!-- Car Item -->
-         <div class="col-lg-4 mb-4">
-            <div class="card">
-              <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
-              <div class="card-body">
-                <h5 class="card-title">Nombre del Auto</h5>
-                <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn btn-primary">Reservar</a>
-              </div>
-            </div>
-          </div>
-           <!-- Car Item -->
-        <div class="col-lg-4 mb-4">
-            <div class="card">
-              <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 2">
-              <div class="card-body">
-                <h5 class="card-title">Nombre del Auto</h5>
-                <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn btn-primary">Reservar</a>
-              </div>
-            </div>
-          </div>
-
-        <!-- Car Item -->
-        <div class="col-lg-4 mb-4">
-          <div class="card">
-            <img src="{{ url_for('static', filename='img/car2.jpg') }}" class="card-img-top" alt="Car 3">
-            <div class="card-body">
-              <h5 class="card-title">Nombre del Auto</h5>
-              <p class="card-text">Descripción del auto. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <a href="#" class="btn btn-primary">Reservar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mostrar Datos</title>
+</head>
+<body>
+    <h1>Datos de los vehículos:</h1>
+    <table>
+        <tr>
+            <th>Modelo</th>
+            <th>Placa</th>
+            <th>Características</th>
+            <th>Disponibilidad</th>
+            <th>Imagen</th>
+        </tr>
+        {% for row in results %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td><img src="{{ url_for('static', filename=row[4]) }}"></td>
+       
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

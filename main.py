@@ -4,6 +4,7 @@ from access.login import handle_login
 import sqlite3
 from dao.cliente import ClienteDAO
 from access.cars import handle_cars
+from access.show_vehicle import show_vehicle_db
 
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -41,7 +42,20 @@ def render_vehiculo():
 """When the user insert a form"""
 @app.route('/add/vehiculo/added', methods=['POST']) # When de user insert data make a peticion POTS for send that information to the server 
 def vehiculo():
-    return handle_cars(request.form)
+    image = request.files['image_data']
+    print("this:",type(image))
+
+    return handle_cars(request.form, image)
+
+@app.route('/home')
+def home_vehicles():
+
+    vehicles = show_vehicle_db()
+    context = request.args.to_dict()
+
+    complete_context = {**context, 'vehicles': vehicles}
+
+    return render_template('home.html', **complete_context)
 
 
 if __name__ == '__main__':
