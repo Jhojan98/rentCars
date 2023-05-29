@@ -53,9 +53,12 @@
                 <p class="card-text">Precio: {{ vehicle[3]}}</p>
               </div>
             </div>
+            <form action="/reservar" method="POST">
+              <input type="hidden" name="vehicle" value="{{ vehicle }}">
             <div class="col-md-6 d-flex align-items-center justify-content-center">
-              <button class="btn-lg">Reservar</button>
+              <button class="btn-lg" onclick="reservar()">Reservar</reservar>
             </div>
+          </form>
           </div>
         </div>
       </div>

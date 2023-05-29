@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for
-from .show_vehicle import show_vehicle_db
+
 from dao.cliente import ClienteDAO
 
 

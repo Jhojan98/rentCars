@@ -34,6 +34,7 @@ class Vehicle():
                                 self._image_data)
         )
         return cursor.lastrowid  
+    
 
 
     @with_connection
@@ -52,4 +53,19 @@ class Vehicle():
         cursor.execute(query)
         result = cursor.fetchall()
         return result
+    
+    @with_connection
+    def update_vehicle(self,aviailability,plate, *args, **kwargs):
+        conn = kwargs.pop('connection')
+        cursor = conn.cursor()
+        query = f'''
+        UPDATE vehiculo
+        SET aviailability = ?
+        WHERE plate = ?
+        '''
+        cursor.execute(query,
+                                (aviailability,
+                                 plate)
+        )
+        return cursor.lastrowid  
     
