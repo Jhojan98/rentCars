@@ -44,6 +44,7 @@ class Vehicle():
         SELECT model,
             plate,
             characteristics,
+            price,
             aviailability,
             image_data
         FROM vehiculo

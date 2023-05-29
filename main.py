@@ -59,6 +59,8 @@ def home_vehicles():
 
     vehicles = show_vehicle_db()
     context = request.args.to_dict()
+    for vehicle in vehicles:
+        print(vehicle)
 
     complete_context = {**context, 'vehicles': vehicles}
 

@@ -1,5 +1,6 @@
 from flask import render_template, redirect,url_for
 from dao.cliente import ClienteDAO
+import sqlite3
 
 
 def handle_signup(form):
@@ -13,9 +14,14 @@ def handle_signup(form):
     password= form['password']
     
     cliente = ClienteDAO()
-    cliente.data(identification, username, name, last_name, address, phone, email, password)
-    cliente.insert_client();
-    print(username,email,password)
+
+    try:
+        cliente.data(identification, username, name, last_name, address, phone, email, password)
+        cliente.insert_client();
+    except sqlite3.IntegrityError:
+        return redirect(url_for('render_singup'))
+    finally:
+        print(username,email,password)
 
 
     return redirect(url_for('home_vehicles'))

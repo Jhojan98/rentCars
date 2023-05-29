@@ -9,13 +9,14 @@ def handle_login(form):
     
     cliente = ClienteDAO()
     data = cliente.select_client(username,password)
-    # vehicle = show_vehicle_db()
+    
     
     if(data != None):
         context = {
             'is_admin':data[-1] == 1,
-            # 'vehicles': vehicle,
         }
+
+        print(context['is_admin'])
         return redirect(url_for('home_vehicles', **context))
     
     context = {
