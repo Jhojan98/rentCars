@@ -8,7 +8,7 @@ def create_table_cliente(*args,**kwargs):
         CREATE TABLE IF NOT EXISTS cliente (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             identification INTEGER PRIMARY_KEY UNIQUE,
-            username TEXT NOT NULL,
+            username TEXT NOT NULL UNIQUE,
             name TEXT NOT NULL,
             last_name TEXT NOT NULL,
             address TEXT NOT NULL,
@@ -44,7 +44,7 @@ def create_table_vehiculo(*args,**kwargs):
     CREATE TABLE IF NOT EXISTS vehiculo (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         model TEXT NOT NULL,
-        plate TEXT NOT NULL,
+        plate TEXT NOT NULL UNIQUE,
         characteristics TEXT NOT NULL,
         price TEXT NOT NULL,
         aviailability BOOLEAN NOT NULL DEFAULT 1,
