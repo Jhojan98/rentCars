@@ -2,10 +2,11 @@ from db.connection import with_connection
 
 class Vehicle():
 
-    def data(self, model, plate, characteristics, aviailability, image):
+    def data(self, model, plate, characteristics, price, aviailability, image):
         self._model = model
         self._plate = plate
         self._characteristics = characteristics
+        self._price = price
         self._aviailability = aviailability
         self._image_data = image
 
@@ -19,14 +20,16 @@ class Vehicle():
             (model,
             plate,
             characteristics,
+            price,
             aviailability,
             image_data)
-            VALUES (?,?,?,?,?)
+            VALUES (?,?,?,?,?,?)
         '''
         cursor.execute(query,
                                 (self._model,
                                 self._plate,
                                 self._characteristics,
+                                self._price,
                                 self._aviailability,
                                 self._image_data)
         )

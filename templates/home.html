@@ -16,13 +16,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
+            <a class="nav-link" href="/home">Inicio</a>
           </li>
           <li class="nav-item">
             {% if is_admin %}
               <a class="nav-link" href="/add/vehiculo">Add vehicle</a>
             {% else %}
-              <a class="nav-link" href="#">Acerca de</a>
+              <a class="nav-link" href="/">Salir</a>
             {% endif %}  
           </li>
         </ul>

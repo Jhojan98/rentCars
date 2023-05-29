@@ -11,14 +11,16 @@ def handle_cars(form, image):
     model = form['model']
     plate = form['plate']
     characteristics = form['characteristics']
-    availability = form['availability']
+    price = form['price']
+    aviailability = True
 
     image_path = 'cars/' + image.filename
     image.save('static/'+image_path)
 
+    print(model, plate, characteristics, price, aviailability, image_path)
 
     vehiculo = Vehicle()
-    vehiculo.data(model, plate, characteristics, availability, image_path)
+    vehiculo.data(model, plate, characteristics, price, aviailability, image_path)
     vehiculo.insert_vehicle()
 
 
