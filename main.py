@@ -7,6 +7,8 @@ import ast
 from dao.cliente import ClienteDAO
 from access.cars import handle_cars
 from access.querys_vehicle import show_vehicle_db, update_vehicle_db
+import json
+from ast import literal_eval
 
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -26,9 +28,11 @@ def render_itemcar():
 @app.route('/itemcar', methods=['POST'])
 def itemcar():
     vehicle = request.form.getlist('vehicle')
+    # client = request.form.getlist('client')
     vehicle_tuple = ast.literal_eval(vehicle[0])
-    print(type(vehicle_tuple))
-    print(vehicle_tuple)
+    # client_tuple = ast.literal_eval(vehicle)
+    # print(type(client))
+    # print(client)
     context = {'vehicle': vehicle_tuple}
     return render_template('itemcar.html', **context)
 
@@ -39,6 +43,7 @@ def signup():
 @app.route('/login', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
 def login():
     return handle_login(request.form)
+
 
 """render de template html add card in the web"""
 @app.route('/add/vehiculo')
@@ -60,11 +65,12 @@ def home_vehicles():
 
     vehicles = show_vehicle_db()
     context = request.args.to_dict()
-    for vehicle in vehicles:
-        print(vehicle)
+    # client = request.args.get('data', '')
+    # client = json.loads(client)
+    # tuple(client)
 
+    # complete_context = {**context, 'vehicles': vehicles, 'client':client}
     complete_context = {**context, 'vehicles': vehicles}
-
     return render_template('home.html', **complete_context)
 
 @app.route('/reservar', methods=['POST'])

@@ -1,4 +1,5 @@
 from flask import render_template, redirect, url_for
+import json
 
 from dao.cliente import ClienteDAO
 
@@ -7,16 +8,18 @@ def handle_login(form):
     username = form['username']
     password = form['password']
     
-    cliente = ClienteDAO()
-    data = cliente.select_client(username,password)
+    client = ClienteDAO()
+    data = client.select_client(username,password)
+
+    print(type(data))
     
     
-    if(data != None):
+    if(client != None):
         context = {
             'is_admin':data[-1] == 1,
+            'data': json.dumps(data)
         }
 
-        print(context['is_admin'])
         return redirect(url_for('home_vehicles', **context))
     
     context = {
