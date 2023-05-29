@@ -10,6 +10,7 @@ class ClienteDAO():
             phone,
             email,
             password,
+            i_rent = False,
             is_admin = False):
         self._identificacion = identification
         self._username = username
@@ -19,6 +20,7 @@ class ClienteDAO():
         self._phone= phone
         self._email= email
         self._password = password
+        self._i_rent = i_rent
         self._is_admin = is_admin
 
     @with_connection
@@ -35,8 +37,9 @@ class ClienteDAO():
             phone,
             email,
             password,
+            i_rent,
             is_admin)
-            VALUES(?,?,?,?,?,?,?,?,?)
+            VALUES(?,?,?,?,?,?,?,?,?,?)
         '''
         cursor.execute(query,
                                 (self._identificacion,
@@ -47,6 +50,7 @@ class ClienteDAO():
                                 self._phone,
                                 self._email,
                                 self._password,
+                                self._i_rent,
                                 self._is_admin)
         )
         return cursor.lastrowid

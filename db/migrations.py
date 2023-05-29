@@ -15,6 +15,7 @@ def create_table_cliente(*args,**kwargs):
             phone TEXT NOT NULL,
             email TEXT NOT NULL,
             password TEXT NOT NULL,
+            i_rent BOOLEAN DEFAULT FALSE,
             is_admin BOOLEAN DEFAULT FALSE
     )
     '''
@@ -76,6 +77,11 @@ def create_table_reserva(*args,**kwargs):
      result = cursor.fetchone()
      return result
 
+def run_migrations():
+    create_table_cliente()
+    create_table_pago()
+    create_table_vehiculo()
+    create_table_reserva()
 
 if __name__ == "__main__":
     create_table_cliente()

@@ -82,7 +82,7 @@ if __name__ == '__main__':
     
     try:
         cliente = ClienteDAO()
-        cliente.data(1, "ADMIN", "admin", "admin", "admin",321, "admin@google.com", 1234,True)
+        cliente.data(1, "ADMIN", "admin", "admin", "admin",321, "admin@google.com", 1234, False, True)
         cliente.insert_client()
     except sqlite3.IntegrityError:
         pass
