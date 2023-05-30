@@ -6,7 +6,8 @@ import sqlite3
 import ast
 from dao.cliente import ClienteDAO
 from access.cars import handle_cars
-from access.querys_vehicle import show_vehicle_db, update_vehicle_db
+from querys.querys_vehicle import show_vehicle_db, update_vehicle_db
+from querys.query_client import update_client_db
 import json
 from ast import literal_eval
 
@@ -25,20 +26,23 @@ def render_singup():
 def render_itemcar():
     return render_template('itemcar.html')
 
+
 @app.route('/itemcar', methods=['POST'])
 def itemcar():
     vehicle = request.form.getlist('vehicle')
-    # client = request.form.getlist('client')
+    client = request.form.getlist('client')
+
     vehicle_tuple = ast.literal_eval(vehicle[0])
-    # client_tuple = ast.literal_eval(vehicle)
-    # print(type(client))
-    # print(client)
-    context = {'vehicle': vehicle_tuple}
+    client_tuple = ast.literal_eval(client[0])
+
+    context = {'vehicle': vehicle_tuple, 'client': client_tuple}
     return render_template('itemcar.html', **context)
+
 
 @app.route('/signup', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
 def signup():
     return handle_signup(request.form)
+
 
 @app.route('/login', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
 def login():
@@ -47,41 +51,63 @@ def login():
 
 """render de template html add card in the web"""
 @app.route('/add/vehiculo')
-def render_vehiculo():
-    return render_template('vehiculo.html')
+def add_vehiculo():
+    client = request.args.get('client', '')
+    print(client)
 
+    context = {'client':client}
+    return render_template('vehiculo.html', **context)
 
 
 """When the user insert a form"""
 @app.route('/add/vehiculo/added', methods=['POST']) # When de user insert data make a peticion POTS for send that information to the server 
 def vehiculo():
     image = request.files['image_data']
-    print("this:",type(image))
 
-    return handle_cars(request.form, image)
+    client = request.args.get('client', '')
+    print(client)
+
+    context = {'client':client}
+
+    return handle_cars(request.form, image, **context)
+
 
 @app.route('/home')
 def home_vehicles():
 
     vehicles = show_vehicle_db()
     context = request.args.to_dict()
-    # client = request.args.get('data', '')
-    # client = json.loads(client)
-    # tuple(client)
+    client = request.args.get('data', '')
 
-    # complete_context = {**context, 'vehicles': vehicles, 'client':client}
-    complete_context = {**context, 'vehicles': vehicles}
+    try:
+        client = json.loads(client)
+        client = tuple(client)
+    except:
+        client = ast.literal_eval(client)
+        print("error")
+
+    complete_context = {**context, 'vehicles': vehicles, 'client':client}
     return render_template('home.html', **complete_context)
+
 
 @app.route('/reservar', methods=['POST'])
 def reserva():
     # Obtener el vehículo que se muestra en pantalla
     vehicle = request.form.getlist('vehicle')
+    client = request.form.getlist('client')
     vehicle_tuple = ast.literal_eval(vehicle[0])
+    client_tuple = ast.literal_eval(client[0])
     update_vehicle_db(False, vehicle_tuple[1])
+    update_client_db(True, client_tuple[0])
+    client_tuple = list(client_tuple)
+    client_tuple[8] = 1
+
+    context = {
+        'data':json.dumps(tuple(client_tuple))
+    }
     
     
-    return redirect(url_for ('home_vehicles'))
+    return redirect(url_for ('home_vehicles', **context))
 
 
 if __name__ == '__main__':

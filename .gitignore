@@ -5,6 +5,7 @@ __pycache__/
 
 #evn
 avenv/
+carros-env/
 test.py
 
 # C extensions

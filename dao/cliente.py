@@ -69,6 +69,7 @@ class ClienteDAO():
                 phone,
                 email,
                 password,
+                i_rent,
                 is_admin
             FROM cliente
             WHERE username = ? AND password = ?
@@ -77,5 +78,20 @@ class ClienteDAO():
         result = cursor.fetchone()
         return result
     
+
+    @with_connection
+    def update_client(self,i_rent,identification, *args, **kwargs):
+        conn = kwargs.pop('connection')
+        cursor = conn.cursor()
+        query = f'''
+        UPDATE cliente
+        SET i_rent = ?
+        WHERE identification = ?
+        '''
+        cursor.execute(query,
+                                (i_rent,
+                                 identification)
+        )
+        return cursor.lastrowid  
 
 

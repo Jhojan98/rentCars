@@ -1,13 +1,12 @@
-from flask import request, render_template
+from flask import render_template, redirect, url_for
 from dao.vehiculo import Vehicle
-import os
-import base64
+import sqlite3
 
 
 import time
 
 
-def handle_cars(form, image):
+def handle_cars(form, image, **context):
     model = form['model']
     plate = form['plate']
     characteristics = form['characteristics']
@@ -20,11 +19,14 @@ def handle_cars(form, image):
     print(model, plate, characteristics, price, aviailability, image_path)
 
     vehiculo = Vehicle()
-    vehiculo.data(model, plate, characteristics, price, aviailability, image_path)
-    vehiculo.insert_vehicle()
+    try:
+        vehiculo.data(model, plate, characteristics, price, aviailability, image_path)
+        vehiculo.insert_vehicle()
+    except sqlite3.IntegrityError:
+        return redirect(url_for('add_vehiculo', **context))
 
 
-    return render_template('vehiculo.html')
+    return render_template('vehiculo.html', **context)
 
     
 

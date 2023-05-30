@@ -34,3 +34,4 @@ def insert_reserva(self, *args, **kwargs):
                         self._leave_date)
     )
     return cursor.lastrowid
+
