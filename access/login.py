@@ -10,11 +10,8 @@ def handle_login(form):
     
     client = ClienteDAO()
     data = client.select_client(username,password)
-
-    print(type(data))
-    
-    
-    if(client != None):
+        
+    if(data != None):
         context = {
             'is_admin':data[-1] == 1,
             'data': json.dumps(data)
