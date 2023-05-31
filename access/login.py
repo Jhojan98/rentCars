@@ -5,7 +5,7 @@ from dao.cliente import ClienteDAO
 
 
 def handle_login(form):
-    username = form['username']
+    username = form['username'] # form = requets.form
     password = form['password']
     
     client = ClienteDAO()
@@ -13,8 +13,8 @@ def handle_login(form):
         
     if(data != None):
         context = {
-            'is_admin':data[-1] == 1,
-            'data': json.dumps(data)
+            'is_admin':data[-1] == 1, #data[-1] -- is_admin 1==1 true
+            'data': json.dumps(data) #envia una tupla correctamente
         }
 
         return redirect(url_for('home_vehicles', **context))

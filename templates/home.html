@@ -55,9 +55,10 @@
                   <p class="card-text">{{ vehicle[2] }}</p>
                   <form action="/itemcar" method="post" class="d-inline">
                     <!-- Hidden input fields for vehicle context -->
-                    <input type="list" name="vehicle" value="{{vehicle}}">
-                    <input type="list" name="client" value="{{client}}">
+                    <input type="hidden" name="vehicle" value="{{vehicle}}">
+                    <input type="hidden" name="client" value="{{client}}">
                     <button type="submit" class="btn btn-primary btn-block px-20" {% if client[8] == 1 %}disabled{% endif %}>Reservar</button>
+                    <!-- client[8]  ---- i_rent -->
                   </form>
                 </div>
               </div>

@@ -14,7 +14,7 @@ from ast import literal_eval
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
 
-@app.route('/')
+@app.route('/') #route
 def home():
     return render_template('login.html')
 
@@ -22,29 +22,29 @@ def home():
 def render_singup():
     return render_template('signUp.html')
 
-@app.route('/itemcar')
-def render_itemcar():
-    return render_template('itemcar.html')
+# @app.route('/itemcar')
+# def render_itemcar():
+#     return render_template('itemcar.html')
 
 
 @app.route('/itemcar', methods=['POST'])
 def itemcar():
-    vehicle = request.form.getlist('vehicle')
-    client = request.form.getlist('client')
+    vehicle = request.form.getlist('vehicle') # --> ["(admin,admin)"] - admin,admin -> data for example 
+    client = request.form.getlist('client') # --> ["(admin,admin)"]
 
-    vehicle_tuple = ast.literal_eval(vehicle[0])
+    vehicle_tuple = ast.literal_eval(vehicle[0])# vehicle[0] =  "(admin,admin)" -->  vehicle_tuple = (admin,admin)
     client_tuple = ast.literal_eval(client[0])
 
     context = {'vehicle': vehicle_tuple, 'client': client_tuple}
     return render_template('itemcar.html', **context)
 
 
-@app.route('/signup', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
+@app.route('/signup', methods=['POST'])# When the user insert data make a peticion POTS for send that information to the server 
 def signup():
-    return handle_signup(request.form)
+    return handle_signup(request.form) # se resive la informacion con request.form
 
 
-@app.route('/login', methods=['POST'])# When de user insert data make a peticion POTS for send that information to the server 
+@app.route('/login', methods=['POST'])# When the user insert data make a peticion POTS for send that information to the server 
 def login():
     return handle_login(request.form)
 
@@ -60,7 +60,7 @@ def add_vehiculo():
 
 
 """When the user insert a form"""
-@app.route('/add/vehiculo/added', methods=['POST']) # When de user insert data make a peticion POTS for send that information to the server 
+@app.route('/add/vehiculo/added', methods=['POST']) # When the user insert data make a peticion POTS for send that information to the server 
 def vehiculo():
     image = request.files['image_data']
 
@@ -77,30 +77,32 @@ def home_vehicles():
 
     vehicles = show_vehicle_db()
     context = request.args.to_dict()
-    client = request.args.get('data', '')
+    client = request.args.get('data', '') #recoge del contexto todo lo que dice data
 
     try:
         client = json.loads(client)
         client = tuple(client)
     except:
-        client = ast.literal_eval(client)
+        client = ast.literal_eval(client)  #cliente =  "(admin,admin)" --> cliente = (admin,admin)
         print("error")
 
-    complete_context = {**context, 'vehicles': vehicles, 'client':client}
+    complete_context = {**context, 'vehicles': vehicles, 'client':client}# send information vehicle and client 
+
+
     return render_template('home.html', **complete_context)
 
 
 @app.route('/reservar', methods=['POST'])
 def reserva():
     # Obtener el vehículo que se muestra en pantalla
-    vehicle = request.form.getlist('vehicle')
+    vehicle = request.form.getlist('vehicle') # --> ["(admin,admin)"] - admin,admin -> data for example 
     client = request.form.getlist('client')
-    vehicle_tuple = ast.literal_eval(vehicle[0])
+    vehicle_tuple = ast.literal_eval(vehicle[0])# vehicle[0] =  "(admin,admin)" -->  vehicle_tuple = (admin,admin)
     client_tuple = ast.literal_eval(client[0])
-    update_vehicle_db(False, vehicle_tuple[1])
-    update_client_db(True, client_tuple[0])
-    client_tuple = list(client_tuple)
-    client_tuple[8] = 1
+    update_vehicle_db(False, vehicle_tuple[1]) #call the funciotion update_vehicle_db from querys and vehicle_tuple[1] -- plate
+    update_client_db(True, client_tuple[0]) # client_tuple[0] -- identification
+    client_tuple = list(client_tuple) #(admin,admin) -->  [admin, admin]
+    client_tuple[8] = 1 # i_rent
 
     context = {
         'data':json.dumps(tuple(client_tuple))
